@@ -1,3 +1,45 @@
-<div id="container" style="border: 2px solid grey; height: 500px; width: 500px; position: relative;">
-  <div id="dodger" style="border: 1px solid orangered; border-radius: 30px; height: 50px; width: 50px; position: absolute; top: 250px; left: 250px;"></div>
+<div style="width:800px; margin:0 auto; background-color:red;margin-bottom: 50px;">
+	<div id="container" style="border: 2px solid grey; height: 500px; width: 500px; position: relative;">
+	  <div id="dodger" style="border: 1px solid orangered; border-radius: 30px; height: 50px; width: 50px; position: absolute; top: 250px; left: 250px;"></div>
+	</div>
 </div>
+
+<script>
+const speed = 5;
+let escapeVector = {
+	x: 0,
+  y: 0
+};
+let dodgeLoop;
+const dodgerElement = document.getElementById("dodger");
+
+dodgerElement.addEventListener("mouseenter", () => {startDodging();});
+dodgerElement.addEventListener("mouseleave", () => {stopDodging();});
+
+function newVector() {
+	let newX = 0;
+  let newY = 0;
+  while(newX == 0 && newY == 0) {
+  	newX = Math.round((Math.random() - 0.5) * 2);
+    newY = Math.round((Math.random() - 0.5) * 2);
+  }
+  escapeVector.x = newX;
+  escapeVector.y = newY;
+}
+
+function dodge() {
+	const newTop = Math.round(parseInt(dodgerElement.style.top) + escapeVector.y * speed);
+  const newLeft = Math.round(parseInt(dodgerElement.style.left) + escapeVector.x * speed);
+	dodgerElement.style.top = newTop + "px";
+  dodgerElement.style.left = newLeft + "px";
+}
+
+function startDodging() {
+	newVector();
+  dodgeLoop = setInterval(dodge, 50);
+}
+
+function stopDodging() {
+  clearInterval(dodgeLoop);
+}
+</script>
