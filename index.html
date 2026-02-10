@@ -28,7 +28,7 @@ dodgerElement.addEventListener("mouseleave", () => {stopDodging();});
 function newVector() {
 	let newX = 0;
 	let newY = 0;
-	while(newX == 0 || newY == 0) {
+	while(newX == 0 && newY == 0) {
 		newX = Math.round((Math.random() - 0.5) * 2);
 		newY = Math.round((Math.random() - 0.5) * 2);
 	}
