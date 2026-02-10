@@ -28,6 +28,7 @@ function newVector() {
 		newX = Math.round((Math.random() - 0.5) * 2);
 		newY = Math.round((Math.random() - 0.5) * 2);
 	}
+	console.log("" + newX + ", " + newY);
 	escapeVector.x = newX;
 	escapeVector.y = newY;
 }
@@ -35,7 +36,7 @@ function newVector() {
 function dodge() {
 	const newTop = Math.round(parseInt(dodgerElement.style.top) + escapeVector.y * speed);
 	const newLeft = Math.round(parseInt(dodgerElement.style.left) + escapeVector.x * speed);
-	console.log(newTop, newLeft);
+	console.log("" + newTop + ", " + newLeft);
 	dodgerElement.style.top = newTop + "px";
 	dodgerElement.style.left = newLeft + "px";
 }
