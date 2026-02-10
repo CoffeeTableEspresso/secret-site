@@ -1,10 +1,10 @@
 <div style="width:800px; margin:0 auto; background-color:white;margin-bottom: 50px;">
   <div id="container" style="border: 2px solid grey; height: 500px; width: 800px; position: relative;">
-    <div style="border: 1px solid red; border-radius: 20px; height: 50px; width: 50px; position: absolute; top: 250px; left: 45%;">
-      <button>Yes</button>
+    <div style="border: 1px solid red; border-radius: 15px; height: 50px; width: 50px; position: absolute; top: 250px; right: 55%;">
+      <div><button>Yes</button></div>
     </div>
-    <div id="dodger" style="border: 1px solid red; border-radius: 20px; height: 50px; width: 50px; position: absolute; top: 250px; right: 55%;">
-      <button>No</button>
+    <div id="dodger" style="border: 1px solid red; border-radius: 15px; height: 50px; width: 50px; position: absolute; top: 250px; left: 45%;">
+      <div><button>No</button></div>
     </div>
   </div>
 </div>
@@ -25,7 +25,7 @@ dodgerElement.addEventListener("mouseleave", () => {stopDodging();});
 function newVector() {
 	let newX = 0;
 	let newY = 0;
-	while(newX == 0 && newY == 0) {
+	while(newX == 0 || newY == 0) {
 		newX = Math.round((Math.random() - 0.5) * 2);
 		newY = Math.round((Math.random() - 0.5) * 2);
 	}
@@ -36,6 +36,7 @@ function newVector() {
 function dodge() {
 	const newTop = Math.round(parseInt(dodgerElement.style.top) + escapeVector.y * speed);
 	const newLeft = Math.round(parseInt(dodgerElement.style.left) + escapeVector.x * speed);
+	console.log(newTop, newLeft);
 	dodgerElement.style.top = newTop + "px";
 	dodgerElement.style.left = newLeft + "px";
 }
