@@ -26,8 +26,8 @@ body {
 	<p id="answer"> </p>
   <div id="container" style="border: 2px solid #9e0606; height: 500px; width: 800px; position: relative;">
     <div><h1 class="monsieur-la-doulaise-regular">Will you be my Valentine?</h1></div>
-    <button class="click" style="top: 250px; left: 325px;">Yes</button>
-    <button id="dodger" class="click" style="top: 250px; left: 425px;">No</button>
+    <button id="yes_button" class="click" style="top: 250px; left: 325px;" onclick="click_yes()">Yes</button>
+    <button id="no_button" class="click" style="top: 250px; left: 425px;">No</button>
   </div>
 </div>
 </body>
@@ -41,7 +41,7 @@ let escapeVector = {
 };
 
 let dodgeLoop;
-const dodgerElement = document.getElementById("dodger");
+const dodgerElement = document.getElementById("no_button");
 
 dodgerElement.addEventListener("mouseenter", () => {startDodging();});
 dodgerElement.addEventListener("mouseleave", () => {stopDodging();});
@@ -85,21 +85,24 @@ const defaults = {
   colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
 };
 
-confetti({
-  ...defaults,
-  particleCount: 50,
-  scalar: 2,
-});
+function click_yes() {
+	confetti({
+	  ...defaults,
+	  particleCount: 50,
+	  scalar: 2,
+	});
 
-confetti({
-  ...defaults,
-  particleCount: 25,
-  scalar: 3,
-});
+	confetti({
+	  ...defaults,
+	  particleCount: 25,
+	  scalar: 3,
+	});
 
-confetti({
-  ...defaults,
-  particleCount: 10,
-  scalar: 4,
+	confetti({
+	  ...defaults,
+	  particleCount: 10,
+	  scalar: 4,
 });
+}
+
 </script>
